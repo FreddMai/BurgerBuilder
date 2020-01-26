@@ -1,1 +1,1 @@
-My burger project.
+A burger builder project in React.
