@@ -158,15 +158,15 @@ class ContactData extends Component {
             <form onSubmit={this.orderHandler}>
                 { formElementsArray.map(formElement => (
                     <Input 
-                    key={formElement.id}
-                    elementType={formElement.config.elementType}
-                    elementConfig={formElement.config.elementConfig}
-                    value={formElement.config.value}
-                    invalid={!formElement.config.valid}
-                    shouldValidate={formElement.config.validation}
-                    touched={formElement.config.touched}
-                    valueType={formElement.config.elementConfig.placeholder}
-                    changed={(event) => this.inputChangedHanlder(event, formElement.id)} />
+                        key={formElement.id}
+                        elementType={formElement.config.elementType}
+                        elementConfig={formElement.config.elementConfig}
+                        value={formElement.config.value}
+                        invalid={!formElement.config.valid}
+                        shouldValidate={formElement.config.validation}
+                        touched={formElement.config.touched}
+                        valueType={formElement.config.elementConfig.placeholder}
+                        changed={(event) => this.inputChangedHanlder(event, formElement.id)} />
                 )) }
                 <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
             </form>
@@ -185,9 +185,9 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
-        loading: state.loading
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        loading: state.order.loading
     };
 };
 
