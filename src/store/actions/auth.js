@@ -18,7 +18,7 @@ export const authSuccess = (token, userId) => {
 
 export const authFail = (error) => {
     return {
-        type: actionTypes.FETCH_ORDERS_FAIL,
+        type: actionTypes.AUTH_FAIL,
         error: error
     };
 };
