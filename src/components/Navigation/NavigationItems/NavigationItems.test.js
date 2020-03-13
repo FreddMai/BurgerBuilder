@@ -9,8 +9,23 @@ import NavigationItem from './NavigationItem/NavigationItem';
 configure({adapter: new Adapter()});
 
 describe('<NavigationItems />', () => {
+    let wrapper;
+    beforeEach(() => {
+        wrapper = shallow(<NavgiationItems />);
+    }); 
+
     it('should render two <NavigationItem /> elements if not authenticated', () => {
-        const wrapper = shallow(<NavgiationItems />);
         expect(wrapper.find(NavigationItem)).toHaveLength(2);
+    });
+
+    it('should render three <NavigationItem /> elements if authenticated', () => {
+        // wrapper = shallow(<NavgiationItems isAuth />);
+        wrapper.setProps({isAuth: true});
+        expect(wrapper.find(NavigationItem)).toHaveLength(3);
+    });
+
+    it('should render exact one <NavigationItem></NavigationItem> element if authenticated', () => {
+        wrapper.setProps({isAuth: true});
+        expect(wrapper.contains(<NavigationItem link="/logout">Logout</NavigationItem>)).toEqual(true);
     });
 });
