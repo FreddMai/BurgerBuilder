@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import {connect} from 'react-redux';
 
 import Aux from '../Auxilirary/Auxilirary';
@@ -6,37 +6,30 @@ import classes from './Layout.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
-class Layout extends Component{
-    state = {
-        showSideDrawer: false
+const layout = props => {
+    const [sideDrawerVisible, setSideDrawerVisible] = useState(false);
+
+    const sideDrawerClosedHandler = () => {
+        setSideDrawerVisible(false);
     }
 
-    sideDrawerClosedHandler = () => {
-        this.setState({showSideDrawer: false});
+    const sideDrawerToggleHandler = () => {
+        setSideDrawerVisible(!sideDrawerVisible);
     }
-
-    sideDrawerToggleHandler = () => {
-        this.setState((prevState) => {
-            return {showSideDrawer: !prevState.showSideDrawer};
-        });
-    }
-
-    render (){
         return(
             <Aux>
                 <Toolbar 
-                    isAuth={this.props.isAuth}
-                    drawerToggleClicked={this.sideDrawerToggleHandler} />
+                    isAuth={props.isAuth}
+                    drawerToggleClicked={sideDrawerToggleHandler} />
                 <SideDrawer 
-                    isAuth={this.props.isAuth}
-                    open={this.state.showSideDrawer} 
-                    closed={this.sideDrawerClosedHandler} />
+                    isAuth={props.isAuth}
+                    open={sideDrawerVisible} 
+                    closed={sideDrawerClosedHandler} />
                 <main className={classes.Content}>
-                    {this.props.children}
+                    {props.children}
                 </main>
             </Aux>
         )
-    }
 }
 
 const mapStateToProps = state => {
@@ -45,4 +38,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(Layout);
+export default connect(mapStateToProps)(layout);
