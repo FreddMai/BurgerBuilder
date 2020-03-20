@@ -45,7 +45,8 @@
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.5.9",
-    "webpack": "3.5.1",
+    "webpack": "^2.3.3",
+    "webpack-cli": "^3.3.11",
     "webpack-manifest-plugin": "1.2.1",
     "whatwg-fetch": "2.0.3"
   },
@@ -96,6 +97,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.1.11"
+    "svg-spritemap-webpack-plugin": "^1.0.0",
+    "webpack-dev-server": "^1.16.4"
   }
 }
